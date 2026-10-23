@@ -1,0 +1,8 @@
+PRÁCTICA: LISTAS DOBLEMENTE ENLAZADAS
+Actividades registradas: 7/7
+concept, quiz, r2, lab, r1, r0, sim
+
+Reflexión:
+no fue dificil
+
+Nota: progreso autodeclarado, no prueba de ejecución Python.
