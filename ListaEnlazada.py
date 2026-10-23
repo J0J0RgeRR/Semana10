@@ -84,8 +84,7 @@ def menu():
                 cabeza = insertar_inicio(cabeza, nombre)
             case "2":
                 cabeza = insertar_final(cabeza, nombre)
-            case "3":
-                mostrar(cabeza)
+            case "3":                mostrar(cabeza)
             case "4":
                 posicion = buscar(cabeza, nombre)
                 if posicion != -1:
