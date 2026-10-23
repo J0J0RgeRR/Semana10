@@ -69,33 +69,40 @@ def contar(cabeza):
 def menu():
     cabeza = None
     while True:
-        print("\n1. Agregar turno  2. Mostrar  3. Buscar")
-        print("4. Eliminar turno  5. Contar  0. Salir")
+        print("\n1. Agregar al inicio  2. Agregar al final  3. Mostrar")
+        print("4. Buscar  5. Eliminar turno  6. Contar  0. Salir")
         opcion = input("Opción: ").strip()
         if opcion == "0":
             break
-        if opcion in ("1", "3", "4"):
+        if opcion in ("1", "2", "4", "5"):
             nombre = input("Nombre: ").strip()
             if not nombre:
                 print("Escriba un nombre.")
                 continue
-        if opcion == "1":
-            cabeza = insertar_final(cabeza, nombre)
-        elif opcion == "2":
-            mostrar(cabeza)
-        elif opcion == "3":
-            posicion = buscar(cabeza, nombre)
-            if posicion == -1:
-                print("No encontrado")
-            else:
-                print("Posición:", posicion)
-        elif opcion == "4":
-            cabeza, eliminado = eliminar(cabeza, nombre)
-            print("Eliminado" if eliminado else "No encontrado")
-        elif opcion == "5":
-            print("Total:", contar(cabeza))
-        else:
-            print("Opción inválida")
+        match opcion:
+            case "1":
+                cabeza = insertar_inicio(cabeza, nombre)
+            case "2":
+                cabeza = insertar_final(cabeza, nombre)
+            case "3":
+                mostrar(cabeza)
+            case "4":
+                posicion = buscar(cabeza, nombre)
+                if posicion != -1:
+                    print(f"{nombre} encontrado en la posición {posicion}.")
+                else:
+                    print(f"{nombre} no encontrado.")
+            case "5":
+                cabeza, eliminado = eliminar(cabeza, nombre)
+                if eliminado:
+                    print(f"{nombre} eliminado.")
+                else:
+                    print(f"{nombre} no encontrado.")
+            case "6":
+                total = contar(cabeza)
+                print(f"Total de turnos: {total}")
+            case _:
+                print("Opción inválida. Intente nuevamente.")
 
 
 if __name__ == "__main__":
